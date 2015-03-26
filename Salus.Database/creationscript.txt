@@ -1,0 +1,254 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema Salus
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema Salus
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `Salus` DEFAULT CHARACTER SET utf8 ;
+USE `Salus` ;
+
+-- -----------------------------------------------------
+-- Table `Salus`.`Delivery_site`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`Delivery_site` (
+  `Delivery_site_ID_value` VARCHAR(20) NOT NULL,
+  `Delivery_site_ID_Type` VARCHAR(15) NOT NULL,
+  `Delivery_site_ID_Domain` VARCHAR(15) NOT NULL,
+  `Delivery_site_Name` VARCHAR(200) NOT NULL,
+  `Delivery_site_Name_Type` VARCHAR(15) NOT NULL,
+  `Delivery_site_Name_Prefered_Flag` CHAR(1) NOT NULL DEFAULT 'N',
+  PRIMARY KEY (`Delivery_site_ID_value`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`immunization_Event`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`immunization_Event` (
+  `idimmunization_Event_ID` INT(11) NOT NULL,
+  `Reason_code` INT(2) NULL DEFAULT NULL,
+  `Vaccine_site` VARCHAR(4) NOT NULL,
+  `admin_method` VARCHAR(3) NOT NULL,
+  `dosage` INT(8) NOT NULL,
+  `dosage_type_code` VARCHAR(4) NOT NULL,
+  `Manufacturer` VARCHAR(4) NOT NULL,
+  `Lot_number` VARCHAR(20) NOT NULL,
+  `comment` VARCHAR(1600) NOT NULL,
+  PRIMARY KEY (`idimmunization_Event_ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`not_immunized_event`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`not_immunized_event` (
+  `not_immunized_event_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `date` DATETIME NOT NULL,
+  `reason_code` VARCHAR(3) NOT NULL,
+  PRIMARY KEY (`not_immunized_event_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 202
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`patient`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`patient` (
+  `idpatient` INT(11) NOT NULL,
+  `first_name` VARCHAR(45) NULL DEFAULT NULL,
+  `middle_name` VARCHAR(45) NULL DEFAULT NULL,
+  `last_name` VARCHAR(45) NULL DEFAULT NULL,
+  `address` VARCHAR(45) NULL DEFAULT NULL,
+  `city` VARCHAR(45) NULL DEFAULT NULL,
+  `province` VARCHAR(45) NULL DEFAULT NULL,
+  `postal_code` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idpatient`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`Personal_Name`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`Personal_Name` (
+  `Name_type` VARCHAR(4) NOT NULL,
+  `Surname` VARCHAR(50) NOT NULL,
+  `First_Given` VARCHAR(50) NOT NULL,
+  `Second_Given` VARCHAR(50) NULL DEFAULT NULL,
+  `Third_Given` VARCHAR(50) NULL DEFAULT NULL,
+  `Prefix` VARCHAR(5) NULL DEFAULT NULL COMMENT '\n',
+  `Suffix` VARCHAR(5) NULL DEFAULT NULL,
+  `Preferred_flag` CHAR(1) NOT NULL DEFAULT 'N',
+  `Namenumber` INT(11) NOT NULL,
+  PRIMARY KEY (`Namenumber`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`vaccinator`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`vaccinator` (
+  `providerID` INT(11) NOT NULL,
+  `login` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `registrationID` INT(11) NULL DEFAULT NULL,
+  `Personal_Name_Namenumber` INT(11) NOT NULL,
+  `ID` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`providerID`, `Personal_Name_Namenumber`),
+  INDEX `fk_vaccinator_Personal_Name1_idx` (`Personal_Name_Namenumber` ASC),
+  CONSTRAINT `fk_vaccinator_Personal_Name1`
+    FOREIGN KEY (`Personal_Name_Namenumber`)
+    REFERENCES `Salus`.`Personal_Name` (`Namenumber`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`inventory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`inventory` (
+  `idinventory` INT(11) NOT NULL,
+  `immunization_Event_idimmunization_Event_ID` INT(11) NOT NULL,
+  `quantity` INT(11) NULL DEFAULT NULL,
+  `lotnumber` VARCHAR(45) NULL DEFAULT NULL,
+  `manufacturer` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idinventory`),
+  INDEX `fk_inventory_immunization_Event1_idx` (`immunization_Event_idimmunization_Event_ID` ASC),
+  CONSTRAINT `fk_inventory_immunization_Event1`
+    FOREIGN KEY (`immunization_Event_idimmunization_Event_ID`)
+    REFERENCES `Salus`.`immunization_Event` (`idimmunization_Event_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`vaccine`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`vaccine` (
+  `idvaccine` INT(11) NOT NULL,
+  `vaccine_code` VARCHAR(15) NOT NULL,
+  `antigen` VARCHAR(15) NOT NULL,
+  `Manufacturer` VARCHAR(45) NULL DEFAULT NULL,
+  `inventory_idinventory` INT(11) NOT NULL,
+  PRIMARY KEY (`idvaccine`, `inventory_idinventory`),
+  INDEX `fk_vaccine_inventory1_idx` (`inventory_idinventory` ASC),
+  CONSTRAINT `fk_vaccine_inventory1`
+    FOREIGN KEY (`inventory_idinventory`)
+    REFERENCES `Salus`.`inventory` (`idinventory`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`dispensing`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`dispensing` (
+  `vaccinator_idvaccinator` INT(11) NOT NULL,
+  `vaccine_idvaccine` INT(11) NOT NULL,
+  `date` DATETIME NOT NULL,
+  `patient_idpatient` INT(11) NOT NULL,
+  `signed` TINYINT(1) NULL DEFAULT '0',
+  `signature` INT(11) NULL DEFAULT NULL,
+  `Delivery_site_Delivery_site_ID_value` VARCHAR(20) NOT NULL,
+  `Delivery_organization` INT(2) NULL DEFAULT NULL,
+  `Grade_code` VARCHAR(2) NULL DEFAULT NULL COMMENT 'The Grade Code identifies the grade the immunization service recipient was in when they received the immunization or when they were not administered the antigen. ',
+  `submitter_prefix` INT(2) NOT NULL,
+  `not_immunized_event_not_immunized_event_id` INT(11) NOT NULL DEFAULT '0',
+  `immunization_Event_idimmunization_Event_ID` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`vaccinator_idvaccinator`, `vaccine_idvaccine`, `patient_idpatient`, `Delivery_site_Delivery_site_ID_value`, `not_immunized_event_not_immunized_event_id`, `immunization_Event_idimmunization_Event_ID`),
+  INDEX `fk_vaccinator_has_vaccine_vaccine1_idx` (`vaccine_idvaccine` ASC),
+  INDEX `fk_vaccinator_has_vaccine_vaccinator_idx` (`vaccinator_idvaccinator` ASC),
+  INDEX `fk_vaccinator_has_vaccine_patient1_idx` (`patient_idpatient` ASC),
+  INDEX `fk_dispensing_Delivery_site1_idx` (`Delivery_site_Delivery_site_ID_value` ASC),
+  INDEX `fk_dispensing_not_immunized_event1_idx` (`not_immunized_event_not_immunized_event_id` ASC),
+  INDEX `fk_dispensing_immunization_Event1_idx` (`immunization_Event_idimmunization_Event_ID` ASC),
+  CONSTRAINT `fk_dispensing_Delivery_site1`
+    FOREIGN KEY (`Delivery_site_Delivery_site_ID_value`)
+    REFERENCES `Salus`.`Delivery_site` (`Delivery_site_ID_value`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dispensing_immunization_Event1`
+    FOREIGN KEY (`immunization_Event_idimmunization_Event_ID`)
+    REFERENCES `Salus`.`immunization_Event` (`idimmunization_Event_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dispensing_not_immunized_event1`
+    FOREIGN KEY (`not_immunized_event_not_immunized_event_id`)
+    REFERENCES `Salus`.`not_immunized_event` (`not_immunized_event_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vaccinator_has_vaccine_patient1`
+    FOREIGN KEY (`patient_idpatient`)
+    REFERENCES `Salus`.`patient` (`idpatient`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vaccinator_has_vaccine_vaccinator`
+    FOREIGN KEY (`vaccinator_idvaccinator`)
+    REFERENCES `Salus`.`vaccinator` (`providerID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_vaccinator_has_vaccine_vaccine1`
+    FOREIGN KEY (`vaccine_idvaccine`)
+    REFERENCES `Salus`.`vaccine` (`idvaccine`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `Salus`.`ARI_related_immunization`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Salus`.`ARI_related_immunization` (
+  `ARI_Service_Event_ID` INT(11) NOT NULL,
+  `ARI_Number` INT(9) NOT NULL,
+  `Immunization_Date` DATETIME NOT NULL,
+  `Vaccine_code` VARCHAR(15) NOT NULL,
+  `Immunization_type` CHAR(1) NULL DEFAULT NULL,
+  `Vaccine_site_code` VARCHAR(4) NULL DEFAULT NULL,
+  `administering_method_co` VARCHAR(3) NULL DEFAULT NULL,
+  `Dosage` INT(8) NULL DEFAULT NULL,
+  `Dosage_type` VARCHAR(4) NULL DEFAULT NULL,
+  `Manufacturer` VARCHAR(3) NULL DEFAULT NULL,
+  `Lot_number` VARCHAR(20) NULL DEFAULT NULL,
+  `Number_in_series` INT(2) NULL DEFAULT NULL,
+  `dispensing_vaccinator_idvaccinator` INT(11) NOT NULL,
+  `dispensing_vaccine_idvaccine` INT(11) NOT NULL,
+  `dispensing_patient_idpatient` INT(11) NOT NULL,
+  `dispensing_Delivery_site_Delivery_site_ID_value` VARCHAR(20) NOT NULL,
+  `dispensing_not_immunized_event_not_immunized_event_id` INT(11) NOT NULL,
+  `dispensing_immunization_Event_idimmunization_Event_ID` INT(11) NOT NULL,
+  PRIMARY KEY (`ARI_Service_Event_ID`, `ARI_Number`, `Immunization_Date`, `Vaccine_code`),
+  INDEX `fk_ARI_related_immunization_dispensing1_idx` (`dispensing_vaccinator_idvaccinator` ASC, `dispensing_vaccine_idvaccine` ASC, `dispensing_patient_idpatient` ASC, `dispensing_Delivery_site_Delivery_site_ID_value` ASC, `dispensing_not_immunized_event_not_immunized_event_id` ASC, `dispensing_immunization_Event_idimmunization_Event_ID` ASC),
+  CONSTRAINT `fk_ARI_related_immunization_dispensing1`
+    FOREIGN KEY (`dispensing_vaccinator_idvaccinator` , `dispensing_vaccine_idvaccine` , `dispensing_patient_idpatient` , `dispensing_Delivery_site_Delivery_site_ID_value` , `dispensing_not_immunized_event_not_immunized_event_id` , `dispensing_immunization_Event_idimmunization_Event_ID`)
+    REFERENCES `Salus`.`dispensing` (`vaccinator_idvaccinator` , `vaccine_idvaccine` , `patient_idpatient` , `Delivery_site_Delivery_site_ID_value` , `not_immunized_event_not_immunized_event_id` , `immunization_Event_idimmunization_Event_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
