@@ -52,12 +52,26 @@
                                     <segue destination="dT3-lo-ZPr" kind="show" id="rEi-IA-VFL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZN-Ty-ejq">
+                                <rect key="frame" x="103" y="264" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="vaccinatorLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T9g-sK-v1j"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="Sif-9j-JeA" id="mH5-Ov-9Ca"/>
+                        <outlet property="username" destination="JdB-9b-Meq" id="gDY-AJ-lwh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="330" y="339"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6lp-rm-zhF">
