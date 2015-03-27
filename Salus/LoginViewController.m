@@ -13,13 +13,16 @@
 @synthesize mutableData;
 @synthesize username;
 @synthesize passowrd;
+@synthesize WrongPasswordLabel;
 
 -(void)viewDidLoad{
     username.text=@"Callum.Potter";
     passowrd.text=@"SDK01";
+    WrongPasswordLabel.hidden=true;
 }
 
 - (IBAction)Login:(UIButton *)sender {
+    WrongPasswordLabel.hidden=true;
     NSString *SendMessage = [NSString stringWithFormat:@"user=%@&password=%@",username.text,passowrd.text];
     NSURL *POSTto = [NSURL URLWithString:@"http://52.11.148.71:3000/api/login"];
     
@@ -67,14 +70,31 @@
         NSLog(@"Error parsing JSON.");
     }
     NSLog(@"connectionDidFinishLoading");
-    NSLog(@"%@", [JSONinfo objectForKey:@"Message"][0]);
-    BOOL loginCredentialsAccepted = [[[JSONinfo objectForKey:@"Message"][0] objectForKey:@"pass"] boolValue];
-    NSLog(@"%@", [[JSONinfo objectForKey:@"Message"][0] objectForKey:@"pass"]);
-    NSLog(@"You got: %@", loginCredentialsAccepted ? @"YES" : @"NO");
-    //NSLog(@"%@", loginCredentialsAccepted);
-    if (loginCredentialsAccepted) {
-        [self performSegueWithIdentifier:@"LoginToApp" sender:self];
-        //TODO: set properties with ID #'s
+    if (JSONinfo) {
+        NSLog(@"%@", [JSONinfo objectForKey:@"Message"][0]);
+        BOOL loginCredentialsAccepted = [[[JSONinfo objectForKey:@"Message"][0] objectForKey:@"pass"] boolValue];
+        NSLog(@"%@", [[JSONinfo objectForKey:@"Message"][0] objectForKey:@"pass"]);
+        NSLog(@"You got: %@", loginCredentialsAccepted ? @"YES" : @"NO");
+        //NSLog(@"%@", loginCredentialsAccepted);
+        if (loginCredentialsAccepted) {
+            
+            NSNumber *providerID = [[JSONinfo objectForKey:@"Message"][0] objectForKey:@"providerID"];
+            NSNumber *registrationID  = [[JSONinfo objectForKey:@"Message"][0] objectForKey:@"registrationID"];
+            NSNumber *personalNameNumber = [[JSONinfo objectForKey:@"Message"][0] objectForKey:@"Personal_Name_Namenumber"];
+            
+            
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            
+            [defaults setInteger:[providerID integerValue] forKey:@"providerID"];
+            [defaults setInteger:[registrationID integerValue] forKey:@"registrationID"];
+            [defaults setInteger:[personalNameNumber integerValue] forKey:@"personalNameNumber"];
+            
+            [defaults synchronize];
+            [self performSegueWithIdentifier:@"LoginToApp" sender:self];
+        } else {
+            WrongPasswordLabel.hidden=false;
+        }
     }
     
 }

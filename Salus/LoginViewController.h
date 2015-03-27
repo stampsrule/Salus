@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *passowrd;
 @property (nonatomic, strong) NSMutableData* mutableData;
+@property (weak, nonatomic) IBOutlet UILabel *WrongPasswordLabel;
 
 @end
