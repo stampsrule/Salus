@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6F9FCD9E1AC3EE5B00FEF8A9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FCD9D1AC3EE5B00FEF8A9 /* LoginViewController.m */; };
 		6F9FCDA11AC3EF1600FEF8A9 /* DataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FCDA01AC3EF1600FEF8A9 /* DataService.m */; };
+		6FCD29401AC5DF9200BB7D80 /* SearchParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD293F1AC5DF9200BB7D80 /* SearchParametersViewController.m */; };
 		6FD66BA21AB573E7001E60B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD66BA11AB573E7001E60B4 /* main.m */; };
 		6FD66BA51AB573E8001E60B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD66BA41AB573E8001E60B4 /* AppDelegate.m */; };
 		6FD66BAB1AB573E8001E60B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FD66BA91AB573E8001E60B4 /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 		6F9FCD9D1AC3EE5B00FEF8A9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		6F9FCD9F1AC3EF1600FEF8A9 /* DataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataService.h; sourceTree = "<group>"; };
 		6F9FCDA01AC3EF1600FEF8A9 /* DataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataService.m; sourceTree = "<group>"; };
+		6FCD293E1AC5DF9200BB7D80 /* SearchParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParametersViewController.h; sourceTree = "<group>"; };
+		6FCD293F1AC5DF9200BB7D80 /* SearchParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchParametersViewController.m; sourceTree = "<group>"; };
 		6FD66B9C1AB573E7001E60B4 /* Salus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Salus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD66BA01AB573E7001E60B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6FD66BA11AB573E7001E60B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 				6F9FCDA01AC3EF1600FEF8A9 /* DataService.m */,
 				6F9FCD9C1AC3EE5B00FEF8A9 /* LoginViewController.h */,
 				6F9FCD9D1AC3EE5B00FEF8A9 /* LoginViewController.m */,
+				6FCD293E1AC5DF9200BB7D80 /* SearchParametersViewController.h */,
+				6FCD293F1AC5DF9200BB7D80 /* SearchParametersViewController.m */,
 				6FD66BA91AB573E8001E60B4 /* Main.storyboard */,
 				6FD66BAC1AB573E8001E60B4 /* Images.xcassets */,
 				6FD66BAE1AB573E8001E60B4 /* LaunchScreen.xib */,
@@ -224,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FCD29401AC5DF9200BB7D80 /* SearchParametersViewController.m in Sources */,
 				6F9FCDA11AC3EF1600FEF8A9 /* DataService.m in Sources */,
 				6FD66BA51AB573E8001E60B4 /* AppDelegate.m in Sources */,
 				6FD66BA21AB573E7001E60B4 /* main.m in Sources */,

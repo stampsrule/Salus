@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vDB-ih-eVC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -107,23 +107,23 @@
                         <outlet property="WrongPasswordLabel" destination="K8I-2b-DtU" id="YLe-3o-SDU"/>
                         <outlet property="passowrd" destination="Sif-9j-JeA" id="03y-Dq-cN1"/>
                         <outlet property="username" destination="JdB-9b-Meq" id="Uql-2f-f93"/>
-                        <segue destination="dT3-lo-ZPr" kind="show" identifier="LoginToApp" id="oQc-9f-kR1"/>
+                        <segue destination="vDB-ih-eVC" kind="show" identifier="LoginToApp" id="oQc-9f-kR1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="408" y="339"/>
         </scene>
-        <!--View Controller-->
+        <!--SearchParameters-->
         <scene sceneID="6lp-rm-zhF">
             <objects>
-                <viewController id="U46-It-9Ds" sceneMemberID="viewController">
+                <viewController title="SearchParameters" id="U46-It-9Ds" customClass="SearchParametersViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TEL-jV-mNV"/>
                         <viewControllerLayoutGuide type="bottom" id="PYj-eP-7RR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DKr-Qd-1ph">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="First Name" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X4b-XO-YbW">
@@ -136,6 +136,9 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="185" y="83" width="430" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="CheckIfCanSearch:" destination="U46-It-9Ds" eventType="editingDidEnd" id="Jgs-kh-C61"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Middle Name" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ybk-3n-tg0">
                                 <rect key="frame" x="90" y="121" width="430" height="30"/>
@@ -158,8 +161,11 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="185" y="159" width="430" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="CheckIfCanSearch:" destination="U46-It-9Ds" eventType="editingDidEnd" id="Wj2-OI-eNC"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Adress" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BFr-ww-RWB">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Address" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BFr-ww-RWB">
                                 <rect key="frame" x="90" y="197" width="430" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -169,6 +175,9 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="185" y="197" width="430" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="CheckIfCanSearch:" destination="U46-It-9Ds" eventType="editingDidEnd" id="VIh-F0-N4e"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="City" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-MQ-tyu">
                                 <rect key="frame" x="90" y="235" width="430" height="30"/>
@@ -180,6 +189,9 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="185" y="235" width="430" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="CheckIfCanSearch:" destination="U46-It-9Ds" eventType="editingDidEnd" id="S1Z-Da-9WY"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Province" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuI-Qc-5Rm">
                                 <rect key="frame" x="90" y="273" width="430" height="30"/>
@@ -191,6 +203,9 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="180" y="273" width="430" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="CheckIfCanSearch:" destination="U46-It-9Ds" eventType="editingDidEnd" id="Zyd-pT-RNu"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Postal Code" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kqI-da-1a3">
                                 <rect key="frame" x="90" y="311" width="430" height="30"/>
@@ -202,6 +217,9 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="180" y="311" width="430" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="CheckIfCanSearch:" destination="U46-It-9Ds" eventType="editingDidEnd" id="eGJ-k5-Wst"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Company" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NRO-C4-l8B">
                                 <rect key="frame" x="90" y="349" width="430" height="30"/>
@@ -224,6 +242,9 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="180" y="387" width="430" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="CheckIfCanSearch:" destination="U46-It-9Ds" eventType="editingDidEnd" id="A3O-pz-vNP"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S15-bE-dDY">
                                 <rect key="frame" x="429" y="473" width="91" height="65"/>
@@ -238,7 +259,7 @@
                                     <rect key="frame" x="524" y="473" width="91" height="65"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="fQS-zP-KCz" kind="show" id="oNi-0R-jvE"/>
+                                    <action selector="SearchForPatient:" destination="U46-It-9Ds" eventType="touchUpInside" id="YDr-Tt-Cjd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzN-Q5-kdu">
@@ -252,22 +273,38 @@
                                 <variation key="widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="180" y="491" width="145" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="ScanDL:" destination="U46-It-9Ds" eventType="touchUpInside" id="Stn-14-CA8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pLH-5d-JaF"/>
+                    <connections>
+                        <outlet property="AHSIDTextBox" destination="FyJ-Xv-rqz" id="1yU-Yo-fpk"/>
+                        <outlet property="AddressTextBox" destination="BFr-ww-RWB" id="Ivh-6Z-bCh"/>
+                        <outlet property="CityTextBox" destination="rGL-MQ-tyu" id="MDa-Hk-kLt"/>
+                        <outlet property="CompanyTextBox" destination="NRO-C4-l8B" id="r4j-nd-cJa"/>
+                        <outlet property="FirsNameTextBox" destination="X4b-XO-YbW" id="ZLp-Pl-mSR"/>
+                        <outlet property="LastNameTextBox" destination="eRi-Bo-0cA" id="McU-cC-dbZ"/>
+                        <outlet property="MiddleNameTextBox" destination="ybk-3n-tg0" id="eNJ-bK-GcX"/>
+                        <outlet property="PostalCodeTextBox" destination="kqI-da-1a3" id="gts-hI-vOI"/>
+                        <outlet property="ProvinceTextBox" destination="tuI-Qc-5Rm" id="HJA-eM-8xt"/>
+                        <outlet property="SearchButton" destination="S15-bE-dDY" id="LND-Ra-c6w"/>
+                        <segue destination="fQS-zP-KCz" kind="show" identifier="ShowSearchResults" id="z7i-Fo-sfc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yut-Wl-sPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="339"/>
+            <point key="canvasLocation" x="2660" y="339"/>
         </scene>
-        <!--Table View Controller-->
+        <!--PatientSearchResults-->
         <scene sceneID="WcD-HG-erg">
             <objects>
-                <tableViewController id="fQS-zP-KCz" sceneMemberID="viewController">
+                <tableViewController title="PatientSearchResults" id="fQS-zP-KCz" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oCb-hB-5lk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -289,14 +326,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iX-Lq-WzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2655" y="339"/>
+            <point key="canvasLocation" x="3467" y="339"/>
         </scene>
-        <!--Table View Controller-->
+        <!--VaccineAdministration-->
         <scene sceneID="Yry-ah-bJm">
             <objects>
-                <tableViewController id="akc-1X-5Jv" sceneMemberID="viewController">
+                <tableViewController title="VaccineAdministration" id="akc-1X-5Jv" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EOS-nO-cm9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -348,7 +385,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmT-o5-Z3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3370" y="339"/>
+            <point key="canvasLocation" x="4182" y="339"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="YTo-Xx-ucy">
@@ -359,19 +396,20 @@
                         <viewControllerLayoutGuide type="bottom" id="AGo-dJ-ViI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="anb-XC-po8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBp-Dm-QtD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4119" y="339"/>
+            <point key="canvasLocation" x="4931" y="339"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Patient-->
         <scene sceneID="73B-Zv-Ca6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dT3-lo-ZPr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Patient" image="syringe" selectedImage="Syringe Filled" id="KT5-j4-Itn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lQw-aP-Qml">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -384,10 +422,52 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4c-kZ-uiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1925" y="339"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="hAY-bS-nnY">
+            <objects>
+                <viewController id="fcJ-OC-ohh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L1u-w2-l35"/>
+                        <viewControllerLayoutGuide type="bottom" id="OeQ-aM-35u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HGA-xk-h4P">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings_filled" id="qsP-Ie-ZpW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4yD-R3-Tsp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1925" y="1082"/>
+        </scene>
+        <!--TabBarController-->
+        <scene sceneID="gUX-Rb-Cwn">
+            <objects>
+                <tabBarController title="TabBarController" id="vDB-ih-eVC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="1JH-Nb-8Jc">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dT3-lo-ZPr" kind="relationship" relationship="viewControllers" id="Jpb-oE-AS3"/>
+                        <segue destination="fcJ-OC-ohh" kind="relationship" relationship="viewControllers" id="K2p-tD-kVF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqp-yz-hzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="1113" y="339"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Syringe Filled" width="25" height="25"/>
         <image name="alberta-health-services-logo" width="1854" height="534"/>
+        <image name="settings" width="25" height="25"/>
+        <image name="settings_filled" width="25" height="25"/>
+        <image name="syringe" width="25" height="25"/>
     </resources>
 </document>
