@@ -409,7 +409,7 @@
         <scene sceneID="73B-Zv-Ca6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dT3-lo-ZPr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Patient" image="syringe" selectedImage="Syringe Filled" id="KT5-j4-Itn"/>
+                    <tabBarItem key="tabBarItem" title="Patient" image="syringe" selectedImage="Syringe_Filled" id="KT5-j4-Itn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lQw-aP-Qml">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -464,7 +464,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Syringe Filled" width="25" height="25"/>
+        <image name="Syringe_Filled" width="25" height="25"/>
         <image name="alberta-health-services-logo" width="1854" height="534"/>
         <image name="settings" width="25" height="25"/>
         <image name="settings_filled" width="25" height="25"/>
