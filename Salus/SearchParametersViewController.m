@@ -7,6 +7,7 @@
 //
 
 #import "SearchParametersViewController.h"
+#import "PatientSearchResultsTableViewController.h"
 
 @implementation SearchParametersViewController
 
@@ -23,6 +24,8 @@
 @synthesize AHSIDTextBox;
 @synthesize SearchButton;
 @synthesize mutableData;
+@synthesize JSONinfo;
+@synthesize patientInfo;
 
 
 #pragma mark –
@@ -35,16 +38,15 @@
 }
 
 - (IBAction)CheckIfCanSearch:(UITextField *)sender {
-    if (!(([FirsNameTextBox.text isEqualToString:@"First Name"] && [FirsNameTextBox.text isEqualToString:@""]) || ([LastNameTextBox.text isEqual: @"Last Name"] && [LastNameTextBox.text isEqualToString:@""]))) {
+    if (!(([FirsNameTextBox.text isEqualToString:@"First Name"] || [FirsNameTextBox.text isEqualToString:@""]) || ([LastNameTextBox.text isEqual: @"Last Name"] || [LastNameTextBox.text isEqualToString:@""]))) {
         SearchButton.enabled=true;
-    } else if (!(([AddressTextBox.text isEqualToString:@"Address"]&&[AddressTextBox.text isEqualToString:@""]) || ([CityTextBox.text isEqualToString:@"City"]&&[CityTextBox.text isEqualToString:@""]) || ([ProvinceTextBox.text isEqualToString:@"Province"]&&[ProvinceTextBox.text isEqualToString:@""]) || ([PostalCodeTextBox.text isEqualToString:@"Postal Code"]&&[PostalCodeTextBox.text isEqualToString:@""]))){
+    } else if (!(([AddressTextBox.text isEqualToString:@"Address"]||[AddressTextBox.text isEqualToString:@""]) || ([CityTextBox.text isEqualToString:@"City"]||[CityTextBox.text isEqualToString:@""]) || ([ProvinceTextBox.text isEqualToString:@"Province"]||[ProvinceTextBox.text isEqualToString:@""]) || ([PostalCodeTextBox.text isEqualToString:@"Postal Code"]||[PostalCodeTextBox.text isEqualToString:@""]))){
         SearchButton.enabled=true;
     } else if (!([AHSIDTextBox.text isEqualToString:@""] || [AHSIDTextBox.text isEqualToString:@"AHS ID"])){
         SearchButton.enabled=true;
     }
 }
 
-//TODO: fix up
 - (IBAction)SearchForPatient:(UIButton *)sender {
 
     
@@ -58,46 +60,46 @@
 //    @synthesize CompanyTextBox;
 //    @synthesize AHSIDTextBox;
 
-    NSMutableDictionary *patientInfo  = [[NSMutableDictionary alloc] init];
+    patientInfo  = [[NSMutableDictionary alloc] init];
     
-    if (!([FirsNameTextBox.text isEqualToString:@"First Name"] && [FirsNameTextBox.text isEqualToString:@""])) {
-        [patientInfo setObject:FirsNameTextBox.text forKey:@"FirstName"];
+    if (![FirsNameTextBox.text isEqualToString:@"First Name"] || ![FirsNameTextBox.text isEqualToString:@""]) {
+        [patientInfo setObject:[NSString stringWithFormat:@"%%%@%%", FirsNameTextBox.text] forKey:@"FirstName"];
     } else {
         [patientInfo setObject:@"%" forKey:@"FirstName"];
     }
     
-    if (!(([LastNameTextBox.text isEqual: @"Last Name"] && [LastNameTextBox.text isEqualToString:@""]))) {
-        [patientInfo setObject:LastNameTextBox.text forKey:@"LastName"];
+    if (!(([LastNameTextBox.text isEqual: @"Last Name"] || [LastNameTextBox.text isEqualToString:@""]))) {
+        [patientInfo setObject:[NSString stringWithFormat:@"%%%@%%", LastNameTextBox.text] forKey:@"LastName"];
     }else {
         [patientInfo setObject:@"%" forKey:@"LastName"];
     }
     
-    if (!([AddressTextBox.text isEqualToString:@"Address"]&&[AddressTextBox.text isEqualToString:@""])) {
-        [patientInfo setObject:AddressTextBox.text forKey:@"Address"];
+    if (!([AddressTextBox.text isEqualToString:@"Address"] || [AddressTextBox.text isEqualToString:@""])) {
+        [patientInfo setObject:[NSString stringWithFormat:@"%%%@%%", AddressTextBox.text] forKey:@"Address"];
     }else {
         [patientInfo setObject:@"%" forKey:@"Address"];
     }
     
-    if (!([CityTextBox.text isEqualToString:@"City"]&&[CityTextBox.text isEqualToString:@""])) {
-        [patientInfo setObject:CityTextBox.text forKey:@"City"];
+    if (!([CityTextBox.text isEqualToString:@"City"]||[CityTextBox.text isEqualToString:@""])) {
+        [patientInfo setObject:[NSString stringWithFormat:@"%%%@%%", CityTextBox.text] forKey:@"City"];
     }else {
         [patientInfo setObject:@"%" forKey:@"City"];
     }
     
-    if (!([ProvinceTextBox.text isEqualToString:@"Province"]&&[ProvinceTextBox.text isEqualToString:@""])) {
-        [patientInfo setObject:ProvinceTextBox.text forKey:@"Province"];
+    if (!([ProvinceTextBox.text isEqualToString:@"Province"]||[ProvinceTextBox.text isEqualToString:@""])) {
+        [patientInfo setObject:[NSString stringWithFormat:@"%%%@%%", ProvinceTextBox.text] forKey:@"Province"];
     }else {
         [patientInfo setObject:@"%" forKey:@"Province"];
     }
     
-    if (!([PostalCodeTextBox.text isEqualToString:@"Postal Code"]&&[PostalCodeTextBox.text isEqualToString:@""])) {
-        [patientInfo setObject:PostalCodeTextBox.text forKey:@"PostalCode"];
+    if (!([PostalCodeTextBox.text isEqualToString:@"Postal Code"]||[PostalCodeTextBox.text isEqualToString:@""])) {
+        [patientInfo setObject:[NSString stringWithFormat:@"%%%@%%", PostalCodeTextBox.text] forKey:@"PostalCode"];
     }else {
         [patientInfo setObject:@"%" forKey:@"PostalCode"];
     }
     
     if (!([AHSIDTextBox.text isEqualToString:@""] || [AHSIDTextBox.text isEqualToString:@"AHS ID"])){
-        [patientInfo setObject:AHSIDTextBox.text forKey:@"AHSID"];
+        [patientInfo setObject:[NSString stringWithFormat:@"%%%@%%", AHSIDTextBox.text] forKey:@"AHSID"];
     }else {
         [patientInfo setObject:@"%" forKey:@"AHSID"];
     }
@@ -161,22 +163,35 @@
 // This method is used to process the data after connection has made successfully.
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSError *error = nil;
-    NSDictionary *JSONinfo = [NSJSONSerialization JSONObjectWithData:mutableData options:kNilOptions error:&error];
+    JSONinfo = [NSJSONSerialization JSONObjectWithData:mutableData options:kNilOptions error:&error];
     if (error != nil) {
         NSLog(@"Error parsing JSON.");
     }
     NSLog(@"connectionDidFinishLoading");
     if (JSONinfo) {
-//        NSLog(@"%@", [JSONinfo objectForKey:@"Message"][0]);
         NSLog(@"%@", JSONinfo);
         [self performSegueWithIdentifier:@"ShowSearchResults" sender:self];
     }
       
 }
+// code for no results
+// if no results pass parameter dictionary
+// if(!JSONinfo) pass parameter dictionary
 
 -(void) connection:(NSURLConnection *) connection didReceiveResponse:(NSURLResponse *)response
 {
     mutableData = [NSMutableData data];
 }
 
+#pragma mark –
+#pragma mark segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"ShowSearchResults"])
+    {
+        PatientSearchResultsTableViewController *controller = [segue destinationViewController];
+        NSMutableArray *messageArray = [JSONinfo objectForKey:@"Message"];
+        controller.JSONinfo = messageArray;
+    }
+}
 @end

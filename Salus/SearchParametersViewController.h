@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *AHSIDTextBox;
 @property (weak, nonatomic) IBOutlet UIButton *SearchButton;
 @property (nonatomic, strong) NSMutableData* mutableData;
+@property (nonatomic, strong) NSMutableDictionary* JSONinfo;
+@property (nonatomic, strong) NSMutableDictionary* patientInfo;
+
 
 - (IBAction)CheckIfCanSearch:(UITextField *)sender;
 - (IBAction)SearchForPatient:(UIButton *)sender;

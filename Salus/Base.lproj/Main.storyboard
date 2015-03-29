@@ -280,7 +280,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pLH-5d-JaF"/>
+                    <navigationItem key="navigationItem" title="Patient Information" id="pLH-5d-JaF"/>
                     <connections>
                         <outlet property="AHSIDTextBox" destination="FyJ-Xv-rqz" id="1yU-Yo-fpk"/>
                         <outlet property="AddressTextBox" destination="BFr-ww-RWB" id="Ivh-6Z-bCh"/>
@@ -297,21 +297,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yut-Wl-sPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2660" y="339"/>
+            <point key="canvasLocation" x="2737" y="339"/>
         </scene>
         <!--PatientSearchResults-->
         <scene sceneID="WcD-HG-erg">
             <objects>
-                <tableViewController title="PatientSearchResults" id="fQS-zP-KCz" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="oCb-hB-5lk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                <tableViewController storyboardIdentifier="PatientSearchResultsTableViewController" title="PatientSearchResults" id="fQS-zP-KCz" customClass="PatientSearchResultsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" id="oCb-hB-5lk">
+                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="patientInfoCell" id="I5N-mR-UT1">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patientInfoCell" rowHeight="88" id="I5N-mR-UT1">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I5N-mR-UT1" id="8uV-Zu-bhs">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bethany Lila McKee" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ide-6H-6lF">
+                                            <rect key="frame" x="8" y="8" width="154" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AHS ID: 1006" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3h-XP-fmH">
+                                            <rect key="frame" x="8" y="59" width="104" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="P.O. Box 168, 6605 Adipiscing Avenue Balclutha AB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcX-ZA-HIK">
+                                            <rect key="frame" x="8" y="33" width="398" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="akc-1X-5Jv" kind="show" id="nqC-Z3-5dc"/>
@@ -326,14 +346,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iX-Lq-WzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3467" y="339"/>
+            <point key="canvasLocation" x="3544" y="339"/>
         </scene>
         <!--VaccineAdministration-->
         <scene sceneID="Yry-ah-bJm">
             <objects>
                 <tableViewController title="VaccineAdministration" id="akc-1X-5Jv" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EOS-nO-cm9">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -385,7 +405,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmT-o5-Z3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4182" y="339"/>
+            <point key="canvasLocation" x="4259" y="339"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="YTo-Xx-ucy">
@@ -396,33 +416,14 @@
                         <viewControllerLayoutGuide type="bottom" id="AGo-dJ-ViI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="anb-XC-po8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBp-Dm-QtD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4931" y="339"/>
-        </scene>
-        <!--Patient-->
-        <scene sceneID="73B-Zv-Ca6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dT3-lo-ZPr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Patient" image="syringe" selectedImage="Syringe_Filled" id="KT5-j4-Itn"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lQw-aP-Qml">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="U46-It-9Ds" kind="relationship" relationship="rootViewController" id="r4R-5l-PED"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z4c-kZ-uiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1925" y="339"/>
+            <point key="canvasLocation" x="5008" y="339"/>
         </scene>
         <!--Settings-->
         <scene sceneID="hAY-bS-nnY">
@@ -437,7 +438,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" selectedImage="settings_filled" id="qsP-Ie-ZpW"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="qsP-Ie-ZpW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yD-R3-Tsp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -454,20 +455,37 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="dT3-lo-ZPr" kind="relationship" relationship="viewControllers" id="Jpb-oE-AS3"/>
+                        <segue destination="Xem-Gu-Lcv" kind="relationship" relationship="viewControllers" id="eTY-eM-gwg"/>
                         <segue destination="fcJ-OC-ohh" kind="relationship" relationship="viewControllers" id="K2p-tD-kVF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqp-yz-hzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="339"/>
+            <point key="canvasLocation" x="1160" y="339"/>
+        </scene>
+        <!--Patient Info-->
+        <scene sceneID="N97-e9-NRt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xem-Gu-Lcv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Patient Info" image="Needle" id="yqI-hK-PWX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eG6-rD-Unv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="U46-It-9Ds" kind="relationship" relationship="rootViewController" id="Njt-JD-x6q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Klk-25-SZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1925" y="339"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Syringe_Filled" width="25" height="25"/>
+        <image name="Needle" width="25" height="25"/>
         <image name="alberta-health-services-logo" width="1854" height="534"/>
         <image name="settings" width="25" height="25"/>
-        <image name="settings_filled" width="25" height="25"/>
-        <image name="syringe" width="25" height="25"/>
     </resources>
 </document>

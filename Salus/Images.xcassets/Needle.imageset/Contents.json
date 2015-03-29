@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "syringe-25.png"
+      "filename" : "Needle-25.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "syringe-50.png"
+      "filename" : "Needle-50.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "syringe-100.png"
+      "filename" : "Needle-100.png"
     }
   ],
   "info" : {
