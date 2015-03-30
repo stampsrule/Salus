@@ -169,8 +169,21 @@
     }
     NSLog(@"connectionDidFinishLoading");
     if (JSONinfo) {
-        NSLog(@"%@", JSONinfo);
-        [self performSegueWithIdentifier:@"ShowSearchResults" sender:self];
+        NSArray *tempPatientArray = [JSONinfo objectForKey:@"Message"];
+        if (tempPatientArray.count==0) {
+            //TODO: convert to UIAlertController
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No results"
+                                                            message:@"Your search found no results"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:nil];
+            [alert addButtonWithTitle:@"OK"];
+            [alert addButtonWithTitle:@"Save Patient"];
+            [alert show];
+        } else if (tempPatientArray.count>0){
+            NSLog(@"%@", JSONinfo);
+            [self performSegueWithIdentifier:@"ShowSearchResults" sender:self];
+        }
     }
       
 }
@@ -181,6 +194,21 @@
 -(void) connection:(NSURLConnection *) connection didReceiveResponse:(NSURLResponse *)response
 {
     mutableData = [NSMutableData data];
+}
+
+#pragma mark –
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked OK
+    if (buttonIndex == 0) {
+        // do something here...
+    }
+    if (buttonIndex == 1) {
+        // do something here...
+    }
+    if (buttonIndex == 2) {
+        // do something here...
+    }
 }
 
 #pragma mark –

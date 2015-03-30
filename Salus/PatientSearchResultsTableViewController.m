@@ -8,6 +8,7 @@
 
 #import "PatientSearchResultsTableViewController.h"
 #import "NameConversions.h"
+#import "PatientCell.h"
 
 @implementation PatientSearchResultsTableViewController
 
@@ -15,6 +16,7 @@
 
 -(void)viewDidLoad{
     NSLog(@"results did load with: %@", JSONinfo);
+    NSLog(@"size of array: %lu", JSONinfo.count);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -29,27 +31,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"patientInfoCell"];
-    if (JSONinfo.count>0) {
-        NSMutableDictionary *patient = JSONinfo[indexPath.row];
-        
-        UILabel *nameLabel = (UILabel *)[cell viewWithTag:100];
-        nameLabel.text = [NSString stringWithFormat:@"%@ %@",[patient objectForKey:@"first_name"], [patient objectForKey:@"last_name"]];
-        UILabel *addressLabel = (UILabel *)[cell viewWithTag:101];
-        addressLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@",[patient objectForKey:@"address"], [patient objectForKey:@"city"], [NameConversions convert:[patient objectForKey:@"province"]], [patient objectForKey:@"postal_code"]];
-        //
-        //    UILabel *gameLabel = (UILabel *)[cell viewWithTag:102];
-        //    gameLabel.text = player.game;
-
-    }
+    PatientCell *cell = (PatientCell *)[tableView dequeueReusableCellWithIdentifier:@"patientInfoCell"];
+    NSMutableDictionary *patient = JSONinfo[indexPath.row];
+    cell.nameLabel.text =  [NSString stringWithFormat:@"%@ %@",[patient objectForKey:@"first_name"], [patient objectForKey:@"last_name"]];
+    cell.addressLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@",[patient objectForKey:@"address"], [patient objectForKey:@"city"], [NameConversions convert:[patient objectForKey:@"province"]], [patient objectForKey:@"postal_code"]];
+    cell.AHSIDLabel.text = [NSString stringWithFormat:@"%@",[patient objectForKey:@"idpatient"]];
     
     return cell;
 }
 
--(NSString *)convertProvince:(NSString*)name{
-    NSString *shortName = @"";
-    
-    return shortName;
-}
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchParametersViewController : UIViewController
+@interface SearchParametersViewController : UIViewController <UIAlertViewDelegate> 
 @property (weak, nonatomic) IBOutlet UITextField *FirsNameTextBox;
 @property (weak, nonatomic) IBOutlet UITextField *MiddleNameTextBox;
 @property (weak, nonatomic) IBOutlet UITextField *LastNameTextBox;

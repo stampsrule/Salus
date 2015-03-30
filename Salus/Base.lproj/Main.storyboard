@@ -308,7 +308,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patientInfoCell" rowHeight="88" id="I5N-mR-UT1">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="patientInfoCell" rowHeight="88" id="I5N-mR-UT1" customClass="PatientCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I5N-mR-UT1" id="8uV-Zu-bhs">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -334,6 +334,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="AHSIDLabel" destination="y3h-XP-fmH" id="ec4-Iq-lVr"/>
+                                    <outlet property="addressLabel" destination="YcX-ZA-HIK" id="Not-Fd-aa8"/>
+                                    <outlet property="nameLabel" destination="Ide-6H-6lF" id="l3w-Ka-HFD"/>
                                     <segue destination="akc-1X-5Jv" kind="show" id="nqC-Z3-5dc"/>
                                 </connections>
                             </tableViewCell>
