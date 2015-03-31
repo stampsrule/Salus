@@ -50,16 +50,6 @@
 - (IBAction)SearchForPatient:(UIButton *)sender {
 
     
-//    @synthesize FirsNameTextBox;
-//    @synthesize MiddleNameTextBox;
-//    @synthesize LastNameTextBox;
-//    @synthesize AddressTextBox;
-//    @synthesize CityTextBox;
-//    @synthesize ProvinceTextBox;
-//    @synthesize PostalCodeTextBox;
-//    @synthesize CompanyTextBox;
-//    @synthesize AHSIDTextBox;
-
     patientInfo  = [[NSMutableDictionary alloc] init];
     
     if (![FirsNameTextBox.text isEqualToString:@"First Name"] || ![FirsNameTextBox.text isEqualToString:@""]) {
@@ -173,12 +163,11 @@
         if (tempPatientArray.count==0) {
             //TODO: convert to UIAlertController
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No results"
-                                                            message:@"Your search found no results"
+                                                            message:@"Your search found no results. \n Would you like to create a new patient?"
                                                            delegate:self
                                                   cancelButtonTitle:@"Cancel"
                                                   otherButtonTitles:nil];
             [alert addButtonWithTitle:@"OK"];
-            [alert addButtonWithTitle:@"Save Patient"];
             [alert show];
         } else if (tempPatientArray.count>0){
             NSLog(@"%@", JSONinfo);
@@ -187,28 +176,44 @@
     }
       
 }
-// code for no results
-// if no results pass parameter dictionary
-// if(!JSONinfo) pass parameter dictionary
+
 
 -(void) connection:(NSURLConnection *) connection didReceiveResponse:(NSURLResponse *)response
 {
     mutableData = [NSMutableData data];
 }
-
+//TODO fix
 #pragma mark –
 #pragma mark UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     // the user clicked OK
     if (buttonIndex == 0) {
+        //cancel was pressed, not much to do
         // do something here...
     }
     if (buttonIndex == 1) {
-        // do something here...
+        [self performSegueWithIdentifier:@"AddPatient" sender:self];
     }
-    if (buttonIndex == 2) {
-        // do something here...
-    }
+}
+
+#pragma mark - PlayerDetailsViewControllerDelegate
+
+- (void)NewPatientViewControllerDidCancel:(NewPatientTableViewController *)controller
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)NewPatientViewController:(NewPatientTableViewController *)controller didAddPatient:(NSDictionary *)patient
+{
+    FirsNameTextBox.text = [patient objectForKey:@"FirstName"];
+    LastNameTextBox.text = [patient objectForKey:@"LastName"];
+    AddressTextBox.text = [patient objectForKey:@"Address"];
+    CityTextBox.text = [patient objectForKey:@"City"];
+    ProvinceTextBox.text = [patient objectForKey:@"Province"];
+    PostalCodeTextBox.text = [patient objectForKey:@"PostalCode"];
+    AHSIDTextBox.text = [patient objectForKey:@"AHSID"];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark –
@@ -220,6 +225,18 @@
         PatientSearchResultsTableViewController *controller = [segue destinationViewController];
         NSMutableArray *messageArray = [JSONinfo objectForKey:@"Message"];
         controller.JSONinfo = messageArray;
+    }
+    if ([segue.identifier isEqualToString:@"AddPatient"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        NewPatientTableViewController *newPatientTableViewController = [navigationController viewControllers][0];
+        newPatientTableViewController.firstNameTextField.text = FirsNameTextBox.text;
+        newPatientTableViewController.lastNameTextField.text = LastNameTextBox.text;
+        newPatientTableViewController.addressTextField.text = AddressTextBox.text;
+        newPatientTableViewController.cityTextField.text = CityTextBox.text;
+        newPatientTableViewController.provinceTextField.text = ProvinceTextBox.text;
+        newPatientTableViewController.postalCodeTextField.text = PostalCodeTextBox.text;
+        newPatientTableViewController.delegate = self;
     }
 }
 @end

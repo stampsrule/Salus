@@ -10,6 +10,7 @@
 		6F4C8CA61AC7A5FD005D6F1A /* PatientSearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C8CA51AC7A5FD005D6F1A /* PatientSearchResultsTableViewController.m */; };
 		6F4C8CA91AC87554005D6F1A /* NameConversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C8CA81AC87554005D6F1A /* NameConversions.m */; };
 		6F4C8CAC1AC9C5EA005D6F1A /* PatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C8CAB1AC9C5EA005D6F1A /* PatientCell.m */; };
+		6F4C8CAF1ACA16EA005D6F1A /* NewPatientTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C8CAE1ACA16EA005D6F1A /* NewPatientTableViewController.m */; };
 		6F9FCD9E1AC3EE5B00FEF8A9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FCD9D1AC3EE5B00FEF8A9 /* LoginViewController.m */; };
 		6FCD29401AC5DF9200BB7D80 /* SearchParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD293F1AC5DF9200BB7D80 /* SearchParametersViewController.m */; };
 		6FD66BA21AB573E7001E60B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD66BA11AB573E7001E60B4 /* main.m */; };
@@ -37,6 +38,8 @@
 		6F4C8CA81AC87554005D6F1A /* NameConversions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameConversions.m; sourceTree = "<group>"; };
 		6F4C8CAA1AC9C5EA005D6F1A /* PatientCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientCell.h; sourceTree = "<group>"; };
 		6F4C8CAB1AC9C5EA005D6F1A /* PatientCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientCell.m; sourceTree = "<group>"; };
+		6F4C8CAD1ACA16EA005D6F1A /* NewPatientTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPatientTableViewController.h; sourceTree = "<group>"; };
+		6F4C8CAE1ACA16EA005D6F1A /* NewPatientTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPatientTableViewController.m; sourceTree = "<group>"; };
 		6F9FCD9C1AC3EE5B00FEF8A9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		6F9FCD9D1AC3EE5B00FEF8A9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		6FCD293E1AC5DF9200BB7D80 /* SearchParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParametersViewController.h; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 				6F9FCD9D1AC3EE5B00FEF8A9 /* LoginViewController.m */,
 				6FCD293E1AC5DF9200BB7D80 /* SearchParametersViewController.h */,
 				6FCD293F1AC5DF9200BB7D80 /* SearchParametersViewController.m */,
+				6F4C8CAD1ACA16EA005D6F1A /* NewPatientTableViewController.h */,
+				6F4C8CAE1ACA16EA005D6F1A /* NewPatientTableViewController.m */,
 				6F4C8CA41AC7A5FD005D6F1A /* PatientSearchResultsTableViewController.h */,
 				6F4C8CA51AC7A5FD005D6F1A /* PatientSearchResultsTableViewController.m */,
 				6F4C8CAA1AC9C5EA005D6F1A /* PatientCell.h */,
@@ -239,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4C8CAF1ACA16EA005D6F1A /* NewPatientTableViewController.m in Sources */,
 				6FCD29401AC5DF9200BB7D80 /* SearchParametersViewController.m in Sources */,
 				6FD66BA51AB573E8001E60B4 /* AppDelegate.m in Sources */,
 				6F4C8CA91AC87554005D6F1A /* NameConversions.m in Sources */,

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewPatientTableViewController.h"
 
-@interface SearchParametersViewController : UIViewController <UIAlertViewDelegate> 
+@interface SearchParametersViewController : UIViewController <UIAlertViewDelegate, NewPatientTableViewControllerDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *FirsNameTextBox;
 @property (weak, nonatomic) IBOutlet UITextField *MiddleNameTextBox;
 @property (weak, nonatomic) IBOutlet UITextField *LastNameTextBox;
@@ -19,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *CompanyTextBox;
 @property (weak, nonatomic) IBOutlet UITextField *AHSIDTextBox;
 @property (weak, nonatomic) IBOutlet UIButton *SearchButton;
+
 @property (nonatomic, strong) NSMutableData* mutableData;
 @property (nonatomic, strong) NSMutableDictionary* JSONinfo;
 @property (nonatomic, strong) NSMutableDictionary* patientInfo;
