@@ -9,9 +9,12 @@
 #import "PatientSearchResultsTableViewController.h"
 #import "NameConversions.h"
 #import "PatientCell.h"
+#import "DispensingTableViewController.h"
+#import "AdverseReactionViewController.h"
+
 
 @implementation PatientSearchResultsTableViewController
-
+NSMutableDictionary *mydictionary;
 @synthesize JSONinfo;
 
 -(void)viewDidLoad{
@@ -40,5 +43,39 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    mydictionary = [[NSMutableDictionary alloc] initWithDictionary:[JSONinfo objectAtIndex:indexPath.row]];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Adverse Side Effects" message:@"Has the patient been advised of the adverse side effectst?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+    [alert addButtonWithTitle:@"No"];
+    [alert show];
+}
 
+// based off button do segue
+// pass data through segue
+
+//
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {     // and they clicked OK.
+        [self performSegueWithIdentifier:@"GoStraightToDispense" sender:self];
+    }
+    if (buttonIndex == 1) {     // and they clicked OK.
+        [self performSegueWithIdentifier:@"GivePatientReactionInfo" sender:self];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"GoStraightToDispense"])
+    {
+        DispensingTableViewController *controller = [segue destinationViewController];
+        controller.thePatient = mydictionary;
+    }
+    
+    if ([[segue identifier] isEqualToString:@"GivePatientReactionInfo"])
+    {
+        AdverseReactionViewController *controller = [segue destinationViewController];
+        controller.thePatient = mydictionary;
+    }
+}
 @end

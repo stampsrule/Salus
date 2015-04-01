@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vDB-ih-eVC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ZM-BR-e8S">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -113,6 +113,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="408" y="339"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MAO-EI-BBU">
+            <objects>
+                <navigationController id="0O0-XL-cIn" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f8R-FE-s9n">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gPy-Jw-H8w" kind="relationship" relationship="rootViewController" id="yv2-s9-WGo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YEq-YS-r4T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4228" y="-881"/>
+        </scene>
+        <!--Select Vaccine-->
+        <scene sceneID="cpJ-bD-YaD">
+            <objects>
+                <viewController id="gPy-Jw-H8w" customClass="vaccineSelectorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zr0-pn-eAI"/>
+                        <viewControllerLayoutGuide type="bottom" id="ANE-GO-Bgt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qb2-bV-Byt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wjq-rt-xzX">
+                                <rect key="frame" x="0.0" y="219" width="600" height="162"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gPy-Jw-H8w" id="KG6-Y5-ehS"/>
+                                    <outlet property="delegate" destination="gPy-Jw-H8w" id="kNc-UL-QSj"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Vaccine" id="o7m-ca-YGn">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="jCQ-wh-sNf">
+                            <connections>
+                                <action selector="Save:" destination="gPy-Jw-H8w" id="LuL-AQ-oJ3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="Picker" destination="Wjq-rt-xzX" id="zWy-KK-ClA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gne-NF-dt8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5087" y="-888"/>
         </scene>
         <!--Add Patient-->
         <scene sceneID="gaR-sZ-55G">
@@ -519,7 +572,6 @@
                                     <outlet property="AHSIDLabel" destination="y3h-XP-fmH" id="ec4-Iq-lVr"/>
                                     <outlet property="addressLabel" destination="YcX-ZA-HIK" id="Not-Fd-aa8"/>
                                     <outlet property="nameLabel" destination="Ide-6H-6lF" id="l3w-Ka-HFD"/>
-                                    <segue destination="akc-1X-5Jv" kind="show" id="nqC-Z3-5dc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -528,17 +580,114 @@
                             <outlet property="delegate" destination="fQS-zP-KCz" id="SE6-ej-3kS"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="akc-1X-5Jv" kind="show" identifier="GoStraightToDispense" id="fhZ-fk-UrN"/>
+                        <segue destination="5ZM-BR-e8S" kind="show" identifier="GivePatientReactionInfo" id="JoA-Dg-0oa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iX-Lq-WzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3544" y="339"/>
         </scene>
+        <!--Adverse Reaction View Controller-->
+        <scene sceneID="7Hl-Cb-nsG">
+            <objects>
+                <viewController id="5ZM-BR-e8S" customClass="AdverseReactionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XMA-SP-b5q"/>
+                        <viewControllerLayoutGuide type="bottom" id="1bT-Hc-Kdv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7kx-Ug-TmV">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V2F-9q-OII">
+                                <rect key="frame" x="0.0" y="179" width="600" height="275"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSJ-IQ-GnC">
+                                <rect key="frame" x="58" y="506" width="79" height="42"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Accept">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUF-pj-Lih">
+                                <rect key="frame" x="458" y="506" width="79" height="42"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Reject">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vaccine:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfc-oN-sd5">
+                                <rect key="frame" x="16" y="129" width="77" height="42"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQE-Yz-6Uj">
+                                <rect key="frame" x="90" y="129" width="396" height="42"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCf-FZ-M2G">
+                                <rect key="frame" x="484" y="129" width="66" height="42"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Change">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="0O0-XL-cIn" kind="presentation" identifier="selectVaccine" modalTransitionStyle="flipHorizontal" id="P8o-eK-5db"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="VaccineLabel" destination="bQE-Yz-6Uj" id="eb8-qp-lGi"/>
+                        <segue destination="u9J-Ec-U0m" kind="show" id="J6n-0M-HZn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aIb-Bz-Ywy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4228" y="-75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zHK-5O-eaj">
+            <objects>
+                <viewController id="u9J-Ec-U0m" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qs1-3W-hhj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ig6-RF-I75"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uh9-76-WlI">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="akc-1X-5Jv" kind="show" id="gX4-Ky-Nzu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U2e-GU-Aac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4904" y="-75"/>
+        </scene>
         <!--VaccineAdministration-->
         <scene sceneID="Yry-ah-bJm">
             <objects>
-                <tableViewController title="VaccineAdministration" id="akc-1X-5Jv" sceneMemberID="viewController">
+                <tableViewController title="VaccineAdministration" id="akc-1X-5Jv" customClass="DispensingTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EOS-nO-cm9">
-                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -590,7 +739,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmT-o5-Z3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4259" y="339"/>
+            <point key="canvasLocation" x="5601" y="339"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="YTo-Xx-ucy">
@@ -601,14 +750,14 @@
                         <viewControllerLayoutGuide type="bottom" id="AGo-dJ-ViI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="anb-XC-po8">
-                        <rect key="frame" x="0.0" y="64" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBp-Dm-QtD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5008" y="339"/>
+            <point key="canvasLocation" x="6317" y="339"/>
         </scene>
         <!--Settings-->
         <scene sceneID="hAY-bS-nnY">
@@ -673,4 +822,7 @@
         <image name="alberta-health-services-logo" width="1854" height="534"/>
         <image name="settings" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gX4-Ky-Nzu"/>
+    </inferredMetricsTieBreakers>
 </document>
