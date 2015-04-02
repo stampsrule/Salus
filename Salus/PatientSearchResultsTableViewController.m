@@ -47,6 +47,7 @@ NSMutableDictionary *mydictionary;
     mydictionary = [[NSMutableDictionary alloc] initWithDictionary:[JSONinfo objectAtIndex:indexPath.row]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Adverse Side Effects" message:@"Has the patient been advised of the adverse side effectst?" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
     [alert addButtonWithTitle:@"No"];
+    [alert addButtonWithTitle:@"Cancel"];
     [alert show];
 }
 

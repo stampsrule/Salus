@@ -7,14 +7,13 @@
 //
 
 #import "vaccineSelectorViewController.h"
+#import "NameConversions.h"
 
 @implementation vaccineSelectorViewController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _vaccineNames = @[@"Australia (AUD)", @"China (CNY)",
-                      @"France (EUR)", @"Great Britain (GBP)", @"Japan (JPY)"];
 }
 
 - (IBAction)Save:(id)sender
@@ -29,18 +28,18 @@
 }
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return _vaccineNames.count;
+    return [NameConversions getKeyArray].count;
 }
 
 #pragma mark- Picker View Delegate
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    vaccine = [NSString stringWithFormat:@"%@",[_vaccineNames objectAtIndex:row]];
+    vaccine = [NSString stringWithFormat:@"%@",[[NameConversions getKeyArray] objectAtIndex:row]];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return _vaccineNames[row];
+    return [NameConversions getObjectArray][row];
 }
 @end

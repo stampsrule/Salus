@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5ZM-BR-e8S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vDB-ih-eVC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -608,20 +609,34 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSJ-IQ-GnC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSJ-IQ-GnC">
                                 <rect key="frame" x="58" y="506" width="79" height="42"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="gom-qf-Ybe"/>
+                                    <constraint firstAttribute="width" constant="79" id="oOh-lg-sYJ"/>
+                                </constraints>
                                 <state key="normal" title="Accept">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="AcceptImmunization:" destination="5ZM-BR-e8S" eventType="touchUpInside" id="8lY-VR-1JE"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUF-pj-Lih">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUF-pj-Lih">
                                 <rect key="frame" x="458" y="506" width="79" height="42"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79" id="qrg-Zu-0OP"/>
+                                    <constraint firstAttribute="height" constant="42" id="sje-cE-W90"/>
+                                </constraints>
                                 <state key="normal" title="Reject">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="RejectImmunization:" destination="5ZM-BR-e8S" eventType="touchUpInside" id="kBZ-R9-8nI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vaccine:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfc-oN-sd5">
                                 <rect key="frame" x="16" y="129" width="77" height="42"/>
@@ -649,22 +664,31 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1bT-Hc-Kdv" firstAttribute="top" secondItem="rSJ-IQ-GnC" secondAttribute="bottom" constant="8" id="FIH-hf-kYZ"/>
+                            <constraint firstItem="rSJ-IQ-GnC" firstAttribute="bottom" secondItem="dUF-pj-Lih" secondAttribute="bottom" id="NcQ-uV-4dm"/>
+                            <constraint firstItem="rSJ-IQ-GnC" firstAttribute="leading" secondItem="7kx-Ug-TmV" secondAttribute="leadingMargin" constant="42" id="OLy-hW-thK"/>
+                            <constraint firstItem="rSJ-IQ-GnC" firstAttribute="top" secondItem="dUF-pj-Lih" secondAttribute="top" id="fg9-Ci-lnN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dUF-pj-Lih" secondAttribute="trailing" constant="47" id="g0D-v6-3L4"/>
+                            <constraint firstItem="rSJ-IQ-GnC" firstAttribute="centerY" secondItem="dUF-pj-Lih" secondAttribute="centerY" id="mIG-C7-UCo"/>
+                            <constraint firstItem="1bT-Hc-Kdv" firstAttribute="top" secondItem="dUF-pj-Lih" secondAttribute="bottom" constant="8" id="zV7-FF-ZGo"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="VaccineLabel" destination="bQE-Yz-6Uj" id="eb8-qp-lGi"/>
-                        <segue destination="u9J-Ec-U0m" kind="show" id="J6n-0M-HZn"/>
+                        <segue destination="u9J-Ec-U0m" kind="show" identifier="GoToSign" id="J6n-0M-HZn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIb-Bz-Ywy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4228" y="-75"/>
         </scene>
-        <!--View Controller-->
+        <!--Signature Screen Controller-->
         <scene sceneID="zHK-5O-eaj">
             <objects>
-                <viewController id="u9J-Ec-U0m" sceneMemberID="viewController">
+                <viewController id="u9J-Ec-U0m" customClass="SignatureScreenController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qs1-3W-hhj"/>
                         <viewControllerLayoutGuide type="bottom" id="Ig6-RF-I75"/>
@@ -675,23 +699,39 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="akc-1X-5Jv" kind="show" id="gX4-Ky-Nzu"/>
+                        <segue destination="akc-1X-5Jv" kind="show" identifier="AdministerVaccine" id="gX4-Ky-Nzu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2e-GU-Aac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4904" y="-75"/>
+            <point key="canvasLocation" x="4988" y="-126"/>
         </scene>
         <!--VaccineAdministration-->
         <scene sceneID="Yry-ah-bJm">
             <objects>
                 <tableViewController title="VaccineAdministration" id="akc-1X-5Jv" customClass="DispensingTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EOS-nO-cm9">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection id="nCv-KS-hNo">
+                            <tableViewSection id="heU-Po-cjH">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="XNr-Eb-TO0">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XNr-Eb-TO0" id="TWi-gY-8gd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hku-En-Oy8">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hku-En-Oy8" id="Nmk-R9-VOa">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Patient" id="nCv-KS-hNo">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uoG-AI-wIb">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -709,23 +749,58 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M87-UU-aNw" id="E9D-pc-ODu">
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK0-aS-PjD">
-                                                    <rect key="frame" x="516" y="7" width="35" height="30"/>
-                                                    <state key="normal" title="Scan">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="j3b-WA-kzl" kind="show" id="o7U-LN-I1j"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scan Vaccine" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOC-0D-Ugt">
-                                                    <rect key="frame" x="34" y="11" width="104" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Vaccine" id="mtu-5b-vdY">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Iwt-zf-M8H">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iwt-zf-M8H" id="0xW-53-qTA">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="32c-QX-n0I">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="32c-QX-n0I" id="Fqe-1S-Zvn">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GFT-cA-9rP">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GFT-cA-9rP" id="abY-uf-FB1">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="dose" id="jjT-Lk-37w">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hgE-Ex-2N6">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hgE-Ex-2N6" id="hyg-yY-tyJ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="injection site" id="dS6-87-4Y7">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qEi-PK-oY5">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qEi-PK-oY5" id="z3V-Yd-m2c">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="notes" id="Lne-CO-c0i">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1CJ-DQ-AwQ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1CJ-DQ-AwQ" id="C51-OM-4AM">
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -736,10 +811,12 @@
                             <outlet property="delegate" destination="akc-1X-5Jv" id="Q41-lR-Kqa"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmT-o5-Z3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5601" y="339"/>
+            <point key="canvasLocation" x="5704" y="339"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="YTo-Xx-ucy">
@@ -750,14 +827,14 @@
                         <viewControllerLayoutGuide type="bottom" id="AGo-dJ-ViI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="anb-XC-po8">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qBp-Dm-QtD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6317" y="339"/>
+            <point key="canvasLocation" x="6400" y="339"/>
         </scene>
         <!--Settings-->
         <scene sceneID="hAY-bS-nnY">

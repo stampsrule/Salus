@@ -13,4 +13,8 @@
 @property (nonatomic, strong) NSDictionary* nameTable;
 
 +(NSString *)convert: (NSString *)name;
++(NSArray *)getKeyArray;
++(NSArray *)getObjectArray;
++(NSString *)getVaccineNameforcode:(NSString *)key;
+
 @end

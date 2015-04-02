@@ -14,6 +14,7 @@
 		6F4C8CB21ACB4413005D6F1A /* DispensingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C8CB11ACB4413005D6F1A /* DispensingTableViewController.m */; };
 		6F4C8CB51ACB46CF005D6F1A /* AdverseReactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C8CB41ACB46CF005D6F1A /* AdverseReactionViewController.m */; };
 		6F4C8CB81ACC6548005D6F1A /* vaccineSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C8CB71ACC6548005D6F1A /* vaccineSelectorViewController.m */; };
+		6F4C8CBB1ACCC8BC005D6F1A /* SignatureScreenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C8CBA1ACCC8BC005D6F1A /* SignatureScreenController.m */; };
 		6F9FCD9E1AC3EE5B00FEF8A9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9FCD9D1AC3EE5B00FEF8A9 /* LoginViewController.m */; };
 		6FCD29401AC5DF9200BB7D80 /* SearchParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD293F1AC5DF9200BB7D80 /* SearchParametersViewController.m */; };
 		6FD66BA21AB573E7001E60B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD66BA11AB573E7001E60B4 /* main.m */; };
@@ -49,6 +50,8 @@
 		6F4C8CB41ACB46CF005D6F1A /* AdverseReactionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdverseReactionViewController.m; sourceTree = "<group>"; };
 		6F4C8CB61ACC6548005D6F1A /* vaccineSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vaccineSelectorViewController.h; sourceTree = "<group>"; };
 		6F4C8CB71ACC6548005D6F1A /* vaccineSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vaccineSelectorViewController.m; sourceTree = "<group>"; };
+		6F4C8CB91ACCC8BC005D6F1A /* SignatureScreenController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureScreenController.h; sourceTree = "<group>"; };
+		6F4C8CBA1ACCC8BC005D6F1A /* SignatureScreenController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureScreenController.m; sourceTree = "<group>"; };
 		6F9FCD9C1AC3EE5B00FEF8A9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		6F9FCD9D1AC3EE5B00FEF8A9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		6FCD293E1AC5DF9200BB7D80 /* SearchParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchParametersViewController.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				6F4C8CB41ACB46CF005D6F1A /* AdverseReactionViewController.m */,
 				6F4C8CB61ACC6548005D6F1A /* vaccineSelectorViewController.h */,
 				6F4C8CB71ACC6548005D6F1A /* vaccineSelectorViewController.m */,
+				6F4C8CB91ACCC8BC005D6F1A /* SignatureScreenController.h */,
+				6F4C8CBA1ACCC8BC005D6F1A /* SignatureScreenController.m */,
 				6F4C8CAA1AC9C5EA005D6F1A /* PatientCell.h */,
 				6F4C8CAB1AC9C5EA005D6F1A /* PatientCell.m */,
 				6FD66BA91AB573E8001E60B4 /* Main.storyboard */,
@@ -263,6 +268,7 @@
 				6F4C8CB81ACC6548005D6F1A /* vaccineSelectorViewController.m in Sources */,
 				6F4C8CAF1ACA16EA005D6F1A /* NewPatientTableViewController.m in Sources */,
 				6FCD29401AC5DF9200BB7D80 /* SearchParametersViewController.m in Sources */,
+				6F4C8CBB1ACCC8BC005D6F1A /* SignatureScreenController.m in Sources */,
 				6FD66BA51AB573E8001E60B4 /* AppDelegate.m in Sources */,
 				6F4C8CA91AC87554005D6F1A /* NameConversions.m in Sources */,
 				6F4C8CAC1AC9C5EA005D6F1A /* PatientCell.m in Sources */,
