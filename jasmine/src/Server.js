@@ -5,11 +5,14 @@ var md5 = require('MD5');
 var rest = require("./REST.js");
 var app  = express();
 
+// Connect to EC2 server that runs mySQL database
 function REST(){
     var self = this;
     self.connectMysql();
 };
 
+// Create connection variables
+// Server is static therefore we must use hard coded variables
 REST.prototype.connectMysql = function() {
     var self = this;
     var pool      =    mysql.createPool({
@@ -30,6 +33,7 @@ REST.prototype.connectMysql = function() {
     });
 }
 
+// Prepare for connection
 REST.prototype.configureExpress = function(connection) {
       var self = this;
       app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,6 +44,7 @@ REST.prototype.configureExpress = function(connection) {
       self.startServer();
 }
 
+// Start server for iOS to connect to
 REST.prototype.startServer = function() {
       app.listen(3000,function(){
           console.log("All right ! I am alive at Port 3000.");
