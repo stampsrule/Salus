@@ -103,7 +103,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             }
         });
     });
-	/*
+	
 	// Select a random row from delivery site table (temp function)
 	router.get("/deliverySite",function(req,res){
 		var query = "SELECT * FROM ?? ORDER BY RAND() LIMIT 1";
@@ -132,10 +132,10 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
         });
 	});
 	
-	// Select vaccine with specific lot number
+	// Select vaccine from (dummy) inventory with specific lot number
 	router.get("/dummy",function(req,res){
-		var query = "SELECT * FROM ? WHERE manufacturer = ?";
-		var table = ["Dummy",req.body.manufacturer];
+		var query = "SELECT * FROM ? WHERE lot_number = ?";
+		var table = ["Dummy",req.body.lotNumber];
 		query = mysql.format(query,table);
 		connection.query(query,function(err,rows){
             if(err) {
@@ -145,7 +145,137 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             }
         });
 	});
-	*/
+	
+	// Insert a rejected event into proper tables
+	router.post("/noEvent",function(req,res){
+		var query = "INSERT INTO ? (not_immunized_event_id,date,reason_code) VALUES (?,?,?)";
+		var table = ["not_immunized_event",req.body.noEventID,req.body.date,req.body.reasonCode];
+		query = mysql.format(query,table);
+		connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "Success"});
+            }
+        });
+		
+		var query = "INSERT INTO ? \
+		(vaccinator_idvaccinator,\
+		vaccine_idvaccine,\
+		date,\
+		patient_idpatient,\
+		signed,\
+		signature,\
+		Delivery_site_Delivery_site_ID_value,\
+		Delivery_organization,\
+		Grade_code,\
+		submitter_prefix,\
+		not_immunized_event_not_immunized_event_id,\
+		immunization_Event_idimmunization_Event_ID)\
+		VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+		var table = ["dispensing",req.body.vaccinatorID,req.body.vaccineID,req.body.date,
+		req.body.patientID,req.body.signed,req.body.signature,req.body.deliverySiteID,
+		req.body.DeliveryOrg,req.body.grade,req.body.submitter,req.body.noEventID,
+		req.body.eventID];
+		query = mysql.format(query,table);
+		connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "Success"});
+            }
+        });
+	});
+	
+	// Insert an immunization event into proper tables
+	router.post("/event",function(req,res){
+		var query = "INSERT INTO ?\
+		(idimmunization_Event_ID,\
+		Reason_code,\
+		Vaccine_site,\
+		admin_method,\
+		dosage,\
+		dosage_type_code,\
+		Manufacturer,\
+		Lot_number,\
+		comment)\
+		VALUES\
+		(?,?,?,?,?,?,?,?,?)";
+		var table = ["immunization_event",req.body.eventID,req.body.reasonCode,req.body.vaccineSite,req.body.adminMethod,\
+		req.body.dosage,req.body.dosageType,req.body.manufacturer,req.body.lotNumber,req.body.comment];
+		query = mysql.format(query,table);
+		connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "Success"});
+            }
+        });
+		
+		var query = "INSERT INTO ? \
+		(vaccinator_idvaccinator,\
+		vaccine_idvaccine,\
+		date,\
+		patient_idpatient,\
+		signed,\
+		signature,\
+		Delivery_site_Delivery_site_ID_value,\
+		Delivery_organization,\
+		Grade_code,\
+		submitter_prefix,\
+		not_immunized_event_not_immunized_event_id,\
+		immunization_Event_idimmunization_Event_ID)\
+		VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+		var table = ["dispensing",req.body.vaccinatorID,req.body.vaccineID,req.body.date,
+		req.body.patientID,req.body.signed,req.body.signature,req.body.deliverySiteID,
+		req.body.DeliveryOrg,req.body.grade,req.body.submitter,req.body.noEventID,
+		req.body.eventID];
+		query = mysql.format(query,table);
+		connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "Success"});
+            }
+        });
+	});
+	
+	/*
+	-- Use only if immunization event DID NOT happen
+INSERT INTO not_immunized_event (not_immunized_event_id,date,reason_code)
+VALUES (1001,'2015-04-01 23:23:23', 'ABC');
+
+-- Use only if immunization event happens
+INSERT INTO immunization_Event
+(idimmunization_Event_ID,
+Reason_code,
+Vaccine_site,
+admin_method,
+dosage,
+dosage_type_code,
+Manufacturer,
+Lot_number,
+comment)
+VALUES
+(1013,4,'RLL','IN',123,'CAP','BAX','LLL-5555','Test Insert');
+
+INSERT INTO dispensing
+(vaccinator_idvaccinator,  -- Must be valid ID from Vaccinator table
+vaccine_idvaccine, -- Must be valid id from Vaccine table
+date, 
+patient_idpatient,
+-- signed, -- Optional
+-- signature, -- Optional
+Delivery_site_Delivery_site_ID_value,
+-- Delivery_organization, -- Optional
+-- Grade_code, -- Optional
+submitter_prefix,
+not_immunized_event_not_immunized_event_id, -- Must be 0 if immunization happened
+immunization_Event_idimmunization_Event_ID -- Must be 0 if immunization DID NOT happen
+)
+VALUES
+(44279406, 71, '2015-04-01', 1006, '0024MESB9725', 01235, 0, 0); -- Replace one of the 0's with LAST_INSERT_ID() based on what was created prior
+*/
 }
 
 module.exports = REST_ROUTER;
