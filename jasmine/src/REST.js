@@ -31,9 +31,6 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
         var user_name=req.body.user;
         var password=req.body.password;
         console.log("User name = "+user_name+", password is "+password);
-
-        
-	
         var table = [req.body.password, req.body.user];
 
         query = mysql.format(query,table);
@@ -63,9 +60,6 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 res.json({"Error" : false, "Message" : rows});
             }
         });
-
-
-
     });
 	
 	// Get list of all patients from database
@@ -109,21 +103,49 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             }
         });
     });
-	
 	/*
-	select * FROM vaccine WHERE vaccine_code like “%”
-		SELECT * FROM vaccine WHERE vaccine_code LIKE BINARY CONCAT('%','A','%')
-	select a random delivery site
-		choose a random row from the delivery site table
-	from your dummy table select manufacturer where lot number = "x"
-		SELECT * FROM Dummy WHERE manufacturer = 'CLS'
-	if time
-		immunization event
-		non-immunization event
-
-*/
-	//router.get("/all
-
+	// Select a random row from delivery site table (temp function)
+	router.get("/deliverySite",function(req,res){
+		var query = "SELECT * FROM ?? ORDER BY RAND() LIMIT 1";
+		var table = ["Delivery_site"];
+		query = mysql.format(query,table);
+		connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "Success", "Delivery Site" : rows});
+            }
+        });
+	});
+	
+	// Select all vaccines containing a vaccine code string (case specific)
+	router.get("/vaccine",function(req,res){
+		var query = "SELECT * FROM ? WHERE vaccine_code LIKE BINARY CONCAT('%',?,'%')";
+		var table = ["vaccine",req.body.vaccineCode];
+		query = mysql.format(query,table);
+		connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "Success", "Vaccine" : rows});
+            }
+        });
+	});
+	
+	// Select vaccine with specific lot number
+	router.get("/dummy",function(req,res){
+		var query = "SELECT * FROM ? WHERE manufacturer = ?";
+		var table = ["Dummy",req.body.manufacturer];
+		query = mysql.format(query,table);
+		connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"});
+            } else {
+                res.json({"Error" : false, "Message" : "Success", "Vaccine" : rows});
+            }
+        });
+	});
+	*/
 }
 
 module.exports = REST_ROUTER;
